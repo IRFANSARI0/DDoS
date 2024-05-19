@@ -5,7 +5,7 @@ import datetime
 # Defining Variables
 host = str(sys.argv[1])
 port = int(sys.argv[2])
-size = 375
+size = 300
 
 # Sending UDP packets on given IP address
 print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ": Running........")
